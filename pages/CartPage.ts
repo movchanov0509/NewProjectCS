@@ -29,4 +29,20 @@ export class CartPage{
     async clickCloseCart() {
         await this.closeCart.click()
     }
+
+    async checkEmptyCart() {
+        await expect(this.emptyCart).toContainText('Your cart is empty');
+        await expect(this.closeCart).toHaveAttribute('class', 'Drawer__Close Icon-Wrapper--clickable');
+        await expect(this.closeCart).toHaveAttribute('aria-label', 'Close cart');
+    }
+
+    async checkremoveItem() {
+        await expect(this.cartWithProduct).toContainText('Cart');
+        await expect(this.cartText).toContainText('You are eligible for free shipping!');
+        await expect(this.cartItemSmartRobot1).toContainText('Smart Vacuum Robot');
+        await expect(this.removeItem1).toHaveAttribute('class', 'CartItem__Remove Link Link--underline Link--underlineShort');
+        await expect(this.cartItemSmartRobot1).toHaveAttribute('data-quantity', '0');
+    }
+
+    
 }

@@ -26,6 +26,24 @@ export class Search {
         await expect(this.searchInput).toHaveValue(value);
     }
 
+    async verifyProductHref(product: Locator, expectedHref: string) {
+        await expect(product).toHaveAttribute('href', expectedHref);
+    }
+
+    async searchNoResult() {
+        await expect(this.noResult).toContainText('No results could be found');
+    }
+
+    async searchForProduct(productName: string, expectedResults: string) {
+        await this.searchInput.clear();
+        await this.searchInput.fill(productName);
+
+        await expect(this.result).toContainText(expectedResults);
+        await expect(this.productSmartRobot1).toContainText(productName);
+    }
+
+    
+
     
 
 

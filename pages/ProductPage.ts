@@ -27,4 +27,25 @@ export class ProductPage {
     async clickAddToCart() {
         await this.addToCartButton.click()
     }
+
+    async checkAddToCartButton() {
+        await expect(this.addToCartButton).toHaveAttribute('type', 'submit');
+        await expect(this.addToCartButton).toHaveAttribute('data-use-primary-button', 'false');
+        await expect(this.addToCartButton).toHaveAttribute('class', 'ProductForm__AddToCart Button Button--secondary Button--full');
+    }
+
+    async checkDecreaseQuantityButton() {
+        await expect(this.decreaseQuantity).toHaveAttribute('type', 'button');
+        await expect(this.decreaseQuantity).toHaveAttribute('class', 'QuantitySelector__Button Link Link--secondary');
+    }
+
+    async checkQuantitySelector(expectedValue: string = '1') {
+        await expect(this.quantity).toHaveAttribute('class', 'QuantitySelector__CurrentQuantity');
+        await expect(this.quantity).toHaveAttribute('value', expectedValue);
+    }
+
+    async checkIncreaseQuantityButton() {
+        await expect(this.increaseQuantity).toHaveAttribute('type', 'button');
+        await expect(this.increaseQuantity).toHaveAttribute('class', 'QuantitySelector__Button Link Link--secondary');
+    }
 }
