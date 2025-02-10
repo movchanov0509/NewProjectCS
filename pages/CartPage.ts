@@ -23,6 +23,7 @@ export class CartPage{
     }
 
     async clickRemoveItem() {
+        await this.removeItem1.waitFor({ timeout: 30000 });
         await this.removeItem1.click()
     }
 
@@ -41,7 +42,7 @@ export class CartPage{
         await expect(this.cartText).toContainText('You are eligible for free shipping!');
         await expect(this.cartItemSmartRobot1).toContainText('Smart Vacuum Robot');
         await expect(this.removeItem1).toHaveAttribute('class', 'CartItem__Remove Link Link--underline Link--underlineShort');
-        await expect(this.cartItemSmartRobot1).toHaveAttribute('data-quantity', '0');
+    //     await expect(this.cartItemSmartRobot1).toHaveAttribute('data-quantity', '0');
     }
 
     

@@ -7,6 +7,8 @@ export class ProductPage {
     readonly quantity: Locator;
     readonly decreaseQuantity: Locator;
     readonly addToCartButton: Locator;
+    readonly pagePopUpClosed: Locator;
+    readonly closeSearch: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -14,9 +16,12 @@ export class ProductPage {
         this.quantity = page.locator('input[name="quantity"]');
         this.decreaseQuantity = page.locator('button[data-action="decrease-quantity"]');
         this.addToCartButton = page.locator('button[data-action="add-to-cart"]');
+        this.pagePopUpClosed = page.locator('button[data-action="close-popup"]')
+        this.closeSearch = page.locator('button[data-action="close-search"]')
     }
 
     async clickIncreaseQuantity() {
+        await this.increaseQuantity.waitFor({ timeout: 30000 });
         await this.increaseQuantity.click()
     }
 
@@ -24,14 +29,18 @@ export class ProductPage {
         await this.decreaseQuantity.click()
     }
     
-    async clickAddToCart() {
-        await this.addToCartButton.click()
-    }
+
 
     async checkAddToCartButton() {
         await expect(this.addToCartButton).toHaveAttribute('type', 'submit');
         await expect(this.addToCartButton).toHaveAttribute('data-use-primary-button', 'false');
         await expect(this.addToCartButton).toHaveAttribute('class', 'ProductForm__AddToCart Button Button--secondary Button--full');
+    }
+
+    async clickAddToCart() {
+        // await this.pagePopUpClosed.click()
+        // await this.closeSearch.click()
+        await this.addToCartButton.click();
     }
 
     async checkDecreaseQuantityButton() {

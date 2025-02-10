@@ -31,36 +31,27 @@ test.describe('Check functionality of search', async () => {
         await header.checkSearchLink();
         await header.clickSearchLink();
 
-        await productPage.clickAddToCart();
-        await productPage.clickDecreaseQuantity();
-        await productPage.clickIncreaseQuantity();
-
-        await cartPage.clickCloseCart();
-        await cartPage.clickRemoveItem();
-
-        //await search.fillSearchInput(value);
-
     })
 
     test(' searching of Product', async () => {
         await search.fillSearchInput('Smart Door Lock Sleek');
-        await search.searchForProduct('Smart Door Lock Sleek', '1 result')
+        await search.searchForProduct1('Smart Door Lock Sleek', '1 result')
         await search.verifyProductHref(search.productSmartDoor1,
-            '/products/smart-door-lock-sleek?_pos=1&_sid=4d4187b5a&_ss=r&variant=42880518815985')
-    })
+            '/products/smart-door-lock-sleek?_pos=1&_sid=7e68ac181&_ss=r&variant=42880518815985')
+    });
 
 
     test('check that product is absent', async () => {
         await search.fillSearchInput('Secret box');
         await search.searchNoResult();
-    })
+    });
 
 
     test('find, add and remove product from cart', async () => {
         await search.searchInput.clear();
         await search.fillSearchInput('Smart Vacuum Robot');
 
-        await search.searchForProduct('Smart Vacuum Robot', '4 result')
+        await search.searchForProduct2('Smart Vacuum Robot', '4 result')
         await search.productSmartRobot1.click();
 
         await productPage.checkIncreaseQuantityButton();

@@ -17,8 +17,8 @@ export class Search {
         this.searchInputHidden = page.locator('input[name="type"]');
         this.result = page.locator('span[class="Heading Text--subdued u-h7"]').nth(0);
         this.noResult = page.locator('div[class="Segment__Content"]').nth(0);
-        this.productSmartDoor1 = page.locator('a[href = "/products/smart-door-lock-sleek?_pos=1&_sid=0d1c4cfef&_ss=r&variant=42880518815985]').nth(1);
-        this.productSmartRobot1 = page.locator('a', { hasText: 'Smart Vacuum Robot' });
+        this.productSmartDoor1 = page.locator('a', { hasText: 'Smart Door Lock Sleek' }).nth(0);
+        this.productSmartRobot1 = page.locator('a', { hasText: 'Smart Vacuum Robot' }).nth(0);
     }
 
     async fillSearchInput(value: string) {
@@ -34,7 +34,15 @@ export class Search {
         await expect(this.noResult).toContainText('No results could be found');
     }
 
-    async searchForProduct(productName: string, expectedResults: string) {
+    async searchForProduct1(productName: string, expectedResults: string) {
+        await this.searchInput.clear();
+        await this.searchInput.fill(productName);
+
+        await expect(this.result).toContainText(expectedResults);
+        await expect(this.productSmartDoor1).toContainText(productName);
+    }
+
+    async searchForProduct2(productName: string, expectedResults: string) {
         await this.searchInput.clear();
         await this.searchInput.fill(productName);
 
