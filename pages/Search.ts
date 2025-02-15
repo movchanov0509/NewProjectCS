@@ -21,11 +21,6 @@ export class Search {
         this.productSmartRobot1 = page.locator('a', { hasText: 'Smart Vacuum Robot' }).nth(0);
     }
 
-    async fillSearchInput(value: string) {
-        await this.searchInput.fill(value);
-        await expect(this.searchInput).toHaveValue(value);
-    }
-
     async verifyProductHref(product: Locator, expectedHref: string) {
         await expect(product).toHaveAttribute('href', expectedHref);
     }

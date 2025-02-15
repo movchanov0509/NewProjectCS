@@ -6,16 +6,5 @@ export class HomePage{
         this.page = page;
     }
 
-    async checkTitle() {
-        await expect(this.page).toHaveURL('https://theconnectedshop.com/');
-    }
-
-    async checkUrl() {
-        await expect(this.page).toHaveTitle('The Connected Shop - Smart Locks, Smart Sensors, Smart Home & Office');
-    }
-
-    async openSite() {
-        await this.page.goto('/')
-    }
         
 }

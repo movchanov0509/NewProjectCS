@@ -19,15 +19,6 @@ export class ProductPage {
         this.pagePopUpClosed = page.locator('button[data-action="close-popup"]')
         this.closeSearch = page.locator('button[data-action="close-search"]')
     }
-
-    async clickIncreaseQuantity() {
-        await this.increaseQuantity.waitFor({ timeout: 30000 });
-        await this.increaseQuantity.click()
-    }
-
-    async clickDecreaseQuantity() {
-        await this.decreaseQuantity.click()
-    }
     
 
 
@@ -37,11 +28,6 @@ export class ProductPage {
         await expect(this.addToCartButton).toHaveAttribute('class', 'ProductForm__AddToCart Button Button--secondary Button--full');
     }
 
-    async clickAddToCart() {
-        // await this.pagePopUpClosed.click()
-        // await this.closeSearch.click()
-        await this.addToCartButton.click();
-    }
 
     async checkDecreaseQuantityButton() {
         await expect(this.decreaseQuantity).toHaveAttribute('type', 'button');

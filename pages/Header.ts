@@ -59,7 +59,4 @@ export class Header {
         await expect(this.searchLink).toHaveText('Search');
     }
 
-    async clickSearchLink() {
-        await this.searchLink.click();
-    }
 }

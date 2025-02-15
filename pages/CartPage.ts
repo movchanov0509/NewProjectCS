@@ -22,14 +22,6 @@ export class CartPage{
        
     }
 
-    async clickRemoveItem() {
-        await this.removeItem1.waitFor({ timeout: 30000 });
-        await this.removeItem1.click()
-    }
-
-    async clickCloseCart() {
-        await this.closeCart.click()
-    }
 
     async checkEmptyCart() {
         await expect(this.emptyCart).toContainText('Your cart is empty');
